@@ -41,22 +41,22 @@
     ?>
     
     <div class="container p-5 shadow mt-5">
-        <?php  echo '<form method="post" action="edita.php?id='.$id.'">';?>
+    <?php  echo '<form method="post" action="edita.php?id='.$id.'">';?>
             <label class ="h4">Editar de Usuário:</label>
             <div class="form-group">
                 <label for="nome">Nome: </label>
 
-                <?php  echo '<input type="text" class="form-control" id="nome_usuario" name="nome_usuario" value="'.$nome.'" required>';?>
+                <?php  echo '<input type="text" class="form-control" id="nome_usuario" name="nome_usuario" placeholder ="Nome completo" value="'.$nome.'" required>';?>
             </div>
             <div class="form-group">
                 <label for="telefone">Telefone: </label>
 
-                <?php  echo '<input type="number" class="form-control" id="telefone" name="telefone" value ="'.$telefone.'">';?>
+                <?php  echo '<input type="text" class="form-control" id="telefone" name="telefone" placeholder ="(91) 9 9999-9999" value ="'.$telefone.'" required>';?>
             </div>
             <div class="form-group">
                 <label for="endereco">Endereço: </label>
 
-                <?php  echo '<input type="text" class="form-control" id="endereco" name="endereco" value="'.$endereco.'">';?>
+                <?php  echo '<input type="text" class="form-control" id="endereco" name="endereco" placeholder="Logradouro, Número da Casa" value="'.$endereco.'" required>';?>
             </div>
             <button class="btn btn-primary" type="submit">Editar</a>
         </form>

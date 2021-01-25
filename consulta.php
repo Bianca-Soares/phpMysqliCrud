@@ -35,7 +35,7 @@
             <div class="card-body ">
                 <?php
                 //consulta da tabela de usuário
-                    $usuario = DBRead('tb_usuario');
+                    $usuario = DBRead('tb_usuario', '*', 'ORDER BY nome_usuario ASC');
                 //foreach para trabalhar com array
                     foreach($usuario as $user){
                         echo 'Nome: '.$user['nome_usuario'].'<br>';

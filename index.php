@@ -10,19 +10,19 @@
         <a class="btn btn-primary" href="consulta.php" role="button" >Consultar Registros</a>
 </div>
     <div class="container p-5 shadow mt-5">
-        <form method="post" action="controle.php">
+    <form method="post" action="controle.php">
             <label class ="h4">Cadastro de Usuário:</label>
             <div class="form-group">
                 <label for="nome">Nome: </label>
-                <input type="text" class="form-control" id="nome_usuario" name="nome_usuario" required>
+            <input type="text" class="form-control" id="nome_usuario" name="nome_usuario" placeholder ="Nome completo" required>
             </div>
             <div class="form-group">
                 <label for="telefone">Telefone: </label>
-                <input type="text" class="form-control" id="telefone" name="telefone" required>
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(91) 9 9999-9999" required>
             </div>
             <div class="form-group">
                 <label for="endereco">Endereço: </label>
-                <input type="text" class="form-control" id="endereco" name="endereco" required>
+                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Logradouro, Número da Casa" required>
             </div>
             <button class="btn btn-primary" type="submit">Registrar</a>
         </form>
