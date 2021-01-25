@@ -13,11 +13,9 @@
   </style>
  </head>
  <body>
-    <div class="container mt-5">
-        <a class="btn btn-primary" href="index.php" role="button" value="editar">Página de cadastro</a>
-    </div>
-
     <?php  
+        //exibir menu
+        require 'menu.php';
         //requisição das variáveis do banco
         require 'init.php';
 
