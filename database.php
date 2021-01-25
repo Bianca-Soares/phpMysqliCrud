@@ -1,5 +1,5 @@
 <?php
-
+//Criar a função consultar por id
 // Leitura de Registro
     function DBRead($table,  $fields = '*', $params = null){
         $params = ($params) ? " {$params}" : null; // Se()  então ? senão : null
