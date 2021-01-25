@@ -18,11 +18,11 @@
             </div>
             <div class="form-group">
                 <label for="telefone">Telefone: </label>
-                <input type="number" class="form-control" id="telefone" name="telefone" >
+                <input type="text" class="form-control" id="telefone" name="telefone" required>
             </div>
             <div class="form-group">
                 <label for="endereco">Endereço: </label>
-                <input type="text" class="form-control" id="endereco" name="endereco" >
+                <input type="text" class="form-control" id="endereco" name="endereco" required>
             </div>
             <button class="btn btn-primary" type="submit">Registrar</a>
         </form>
