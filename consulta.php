@@ -10,6 +10,11 @@
         align-items: center;
         justify-content: center 
     }
+
+    .navpage{
+        display: flex;
+        justify-content: center 
+    }
   </style>
  </head>
  <body>
@@ -24,32 +29,77 @@
 
         //requisição das querys
         require 'database.php';
+        
+// número de registro por página
+    $limite = "5";
 
-    ?>
+// Verifica se tem valor em página ou exibi  1
+$pagina = 1;
+    $pagina= $_GET['pagina'];
+
+    if(!$pagina){
+        $pagAtual = "1";
+    }else{
+        $pagAtual = $pagina;
+    }
+
+// Determinar o valor inicial
+    $inicio = $pagAtual - 1;
+    $inicio = $inicio * $limite;
+
+?>
 
     <div class="container mt-5">
         <label class ="h4">Lista de Usuário:</label>
         <div class="card"  >
             <div class="card-body ">
                 <?php
-                //consulta da tabela de usuário
-                if(!$usuario){
-                    echo "Sem registro";
-                }else{
-                    $usuario = DBRead('tb_usuario', '*', 'ORDER BY nome_usuario ASC');
-                //foreach para trabalhar com array
-                    foreach($usuario as $user){
-                        echo 'Nome: '.$user['nome_usuario'].'<br>';
-                        echo 'Telefone: '.$user['telefone'].'<br>';
-                        echo 'Endereço: '.$user['endereco'].'<br><br>';
-    //MUDAR PARA O MÉTODO POST                   
-                        echo '<a class="btn btn-primary" href="formularioedita.php?id_usuario='.$user['id_usuario'].'" role="button" >Editar</a>
-                            <a class="btn btn-primary" href="delete.php?id_usuario='.$user['id_usuario'].'"  role="button" >Excluir</a> <br><hr>';
+
+//Selecionar os dados                    
+                  $usuariosLimitado = DBExecute("SELECT * FROM `tb_usuario` ORDER BY nome_usuario ASC LIMIT {$inicio}, {$limite}");
+                  
+                  $usuariosTodos = DBExecute("SELECT * FROM `tb_usuario` ORDER BY nome_usuario ASC");
+                  
+//verificar qunantidade de páginas
+                  $quantidadeRegistro = mysqli_num_rows($usuariosTodos);
+                  $totalPaginas = $quantidadeRegistro / $limite;
+                     $usuarios = DBExecute("SELECT * FROM `tb_usuario` ORDER BY nome_usuario ASC");    
+                    if(!$usuarios){
+                        echo "Sem registro";
+                    }else{
+                        
+//Visualização                   
+                        while ($dados = mysqli_fetch_array($usuariosLimitado)) {
+                            
+                            echo 'Nome: '.$dados["nome_usuario"].'<br>';
+                            echo 'Telefone: '.$dados['telefone'].'<br>';
+                            echo 'Endereço: '.$dados['endereco'].'<br><br>';
+                            
+                            echo '<a class="btn btn-primary" href="formularioedita.php?id_usuario='.$dados['id_usuario'].'" role="button" >Editar</a>
+                                <a class="btn btn-primary" href="delete.php?id_usuario='.$dados['id_usuario'].'"  role="button" >Excluir</a> <br><hr>';                    
+                    }   
+ //Exibir com paginação
+ 
+// agora vamos criar os botões "Anterior e próximo"
+            $anterior = $pagAtual -1;
+            $proximo = $pagAtual +1;
+            
+            
+            if ($pagAtual>1) {
+                echo " <a  href='?pagina=$anterior'><- Anterior</a> ";
+            }
+                echo "|";
+            if ($pagAtual < $totalPaginas) {
+                echo " <a href='?pagina=$proximo'>Próxima -></a>";
+            }
+
                     }
-                }
-                ?>
+                    ?>
+                
             </div>
-        <div>    
+        </div>    
+    
+            
     </div>
-    </body>
+</body>
 </html>
