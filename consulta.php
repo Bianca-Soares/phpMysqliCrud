@@ -31,10 +31,11 @@
         require 'database.php';
         
 // número de registro por página
-    $limite = "5";
+        $limite = "3";
 
 // Verifica se tem valor em página ou exibi  1
-$pagina = 1;
+
+    $pagina = 1;
     $pagina= $_GET['pagina'];
 
     if(!$pagina){
@@ -48,23 +49,22 @@ $pagina = 1;
     $inicio = $inicio * $limite;
 
 ?>
-
+    
     <div class="container mt-5">
         <label class ="h4">Lista de Usuário:</label>
         <div class="card"  >
             <div class="card-body ">
-                <?php
+            <?php
 
 //Selecionar os dados                    
                   $usuariosLimitado = DBExecute("SELECT * FROM `tb_usuario` ORDER BY nome_usuario ASC LIMIT {$inicio}, {$limite}");
                   
-                  $usuariosTodos = DBExecute("SELECT * FROM `tb_usuario` ORDER BY nome_usuario ASC");
-                  
+                  $usuarios = DBExecute("SELECT * FROM `tb_usuario` ORDER BY nome_usuario ASC");                      
 //verificar qunantidade de páginas
-                  $quantidadeRegistro = mysqli_num_rows($usuariosTodos);
+                  $quantidadeRegistro = mysqli_num_rows($usuarios);
                   $totalPaginas = $quantidadeRegistro / $limite;
-                     $usuarios = DBExecute("SELECT * FROM `tb_usuario` ORDER BY nome_usuario ASC");    
-                    if(!$usuarios){
+                     
+                    if($quantidadeRegistro == 0){
                         echo "Sem registro";
                     }else{
                         
@@ -78,6 +78,9 @@ $pagina = 1;
                             echo '<a class="btn btn-primary" href="formularioedita.php?id_usuario='.$dados['id_usuario'].'" role="button" >Editar</a>
                                 <a class="btn btn-primary" href="delete.php?id_usuario='.$dados['id_usuario'].'"  role="button" >Excluir</a> <br><hr>';                    
                     }   
+            ?>
+
+        <?php    
  //Exibir com paginação
  
 // agora vamos criar os botões "Anterior e próximo"
@@ -85,21 +88,19 @@ $pagina = 1;
             $proximo = $pagAtual +1;
             
             
-            if ($pagAtual>1) {
-                echo " <a  href='?pagina=$anterior'><- Anterior</a> ";
+            if ($pagAtual > 1) {
+                echo " <a  href='?pagina=$anterior'><- Anterior</a>  | ";
             }
-                echo "|";
+                
             if ($pagAtual < $totalPaginas) {
                 echo " <a href='?pagina=$proximo'>Próxima -></a>";
             }
 
-                    }
-                    ?>
+            }
+        ?>
                 
             </div>
         </div>    
-    
-            
     </div>
 </body>
 </html>

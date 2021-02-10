@@ -8,9 +8,7 @@
  </head>
  <body>
     <div class="container mt-5">
-        <a class="btn btn-primary" href="index.php" role="button" >Página de cadastro</a>
-        <a class="btn btn-primary" href="consulta.php" role="button" >Consultar de cadastros</a>
-
+        
       <?php
       //requisição das variáveis do banco
         require 'init.php';
@@ -18,9 +16,13 @@
         require 'connection.php';
       //requisição das querys
         require 'database.php';
+
+        require 'menu.php';
+
         $nome= $_POST['nome_usuario'];
         $telefone= $_POST['telefone'];
         $endereco= $_POST['endereco'];
+        
 
         $usuario = array(
             'nome_usuario'  => $nome,

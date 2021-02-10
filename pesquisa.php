@@ -11,13 +11,6 @@
   crossorigin="anonymous"></script>
   <script type="text/javascript" src="js/jquery.mask.min.js"></script>
   
-  <script>
-      $(document).ready(function(){
-          $(document).ready(function(){
-        $('#telefone').mask('(00) 0000-0000');
-        });
-      });
-  </script>
  </head>
 
  <body>   
@@ -34,43 +27,49 @@
         require 'database.php';
 
         $table = "tb_usuario";
-
-        $nome = "João Silva";
-
-        //$usuario = DBRead('tb_usuario', '*', "WHERE nome_usuario LIKE '%$pesquisa%'");
-        $usuario = DBRead('tb_usuario', '*', "WHERE nome_usuario LIKE '%{$nome}%'");
         
     ?>
-    <div class="container p-5 shadow mt-5">
-        <form method="post" action="pesquisa.php">
+    <div class="container p-3 mt-5">
+        <form method="get" action="pesquisa.php">
             <label class ="h4">Pesquisar pelo nome:</label>
             <div class="form-group">
                 <label for="telefone">Nome: </label>
-                <input type="text" class="form-control" id="nome" name="nome" require>
+                <input type="text" class="form-control" id="nome" name="nome" value="" require>
             </div>
-            <button class="btn btn-primary" type="submit">Pesquisar</a>
+            <button class="btn btn-primary" type="submit">Pesquisar</button>
         </form>
     </div>
 
-    <div class="container mt-5">
+    <div class="container shadow p-4 mt-5">
         <label class ="h4">Lista da pesquisa pelo nome:</label>
         <div class="card">
             <div class="card-body ">
                 <?php
-                //consulta pelo nome na tabela de usuário
-                $pesquisa = $_GET['nome'];
-                $usuario = DBRead('tb_usuario', '*', "WHERE nome_usuario LIKE '%$pesquisa%'");
-        
-                   // $usuario = DBRead('tb_usuario');
-                //foreach para trabalhar com array
-                    foreach($usuario as $user){
-                        echo 'Nome: '.$user['nome_usuario'].'<br>';
-                        echo 'Telefone: '.$user['telefone'].'<br>';
-                        echo 'Endereço: '.$user['endereco'].'<br><br>';                 
-                        echo '<a class="btn btn-primary" href="formularioedita.php?id_usuario='.$user['id_usuario'].'" role="button" >Editar</a>
-                                <a class="btn btn-primary" href="delete.php?id_usuario='.$user['id_usuario'].'"  role="button" >Excluir</a> <br><hr>';                    
-                    }
                 
+                if(isset($_GET['nome'])){
+                    $pesquisa = $_GET['nome'];
+                }else{
+                    $pesquisa = "Pesquisa vazia"; 
+                }
+
+
+                if($pesquisa == "Pesquisa vazia" || empty($pesquisa)){
+                    echo "";
+                }else{
+                    
+                    $usuario = DBRead('tb_usuario', '*', "WHERE nome_usuario LIKE '%$pesquisa%'");
+                    if(!$usuario){
+                        echo "Pesquisa vazia";   
+                    }else{
+                        foreach($usuario as $user){
+                            echo 'Nome: '.$user['nome_usuario'].'<br>';
+                            echo 'Telefone: '.$user['telefone'].'<br>';
+                            echo 'Endereço: '.$user['endereco'].'<br><br>';                 
+                            echo '<a class="btn btn-primary" href="formularioedita.php?id_usuario='.$user['id_usuario'].'" role="button" >Editar</a>
+                                    <a class="btn btn-primary" href="delete.php?id_usuario='.$user['id_usuario'].'"  role="button" >Excluir</a> <br><hr>';                    
+                        }
+                    }
+                }
                 ?>
             </div>
         <div>    
