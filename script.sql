@@ -17,3 +17,15 @@ CREATE TABLE IF NOT EXISTS `tb_usuario` (
   `telefone` VARCHAR(16) NULL,
   `endereco` VARCHAR(120) NULL,
   PRIMARY KEY (`id_usuario`));
+
+  Comandos para usar o mysql
+
+usar o usuário root -- senha vazia
+ mysql -u root -p
+
+Banco de dados existentes
+ show databases;
+
+ERRO quando não inicia o mysql:
+Nenhuma conex�o p�de ser feita porque a 
+m�quina de destino as recusou ativamente.

@@ -11,6 +11,29 @@
   crossorigin="anonymous"></script>
   <script type="text/javascript" src="js/jquery.mask.min.js"></script>
   
+  <script type="text/javascript">
+   $(document).ready(function(){
+    $('#formPesquisa').submit(function(e){
+        e.preventDefault();
+
+        var pesquisa = $('#nome_pesquisa').val();
+        console.log(pesquisa);
+
+        //Ajax
+        $.ajax({
+            "url": "api/teste",
+            "data": "parametro=teste",
+            "method": "GET",
+            "dataType": "json",
+            "success": function(r){ alert(r) }
+        });
+     });
+    });
+            
+  </script>
+
+
+
  </head>
 
  <body>   
@@ -30,15 +53,16 @@
         
     ?>
     <div class="container p-3 mt-5">
-        <form method="get" action="pesquisa.php">
+        <form id="formPesquisa">
             <label class ="h4">Pesquisar pelo nome:</label>
             <div class="form-group">
                 <label for="telefone">Nome: </label>
-                <input type="text" class="form-control" id="nome" name="nome" value="" require>
+                <input type="text" class="form-control" id="nome_pesquisa" name="nome" value="" require>
             </div>
-            <button class="btn btn-primary" type="submit">Pesquisar</button>
+            <button class="btn btn-primary" type= "submit">Pesquisar</button>
+   
         </form>
-    </div>
+        </div>
 
     <div class="container shadow p-4 mt-5">
         <label class ="h4">Lista da pesquisa pelo nome:</label>
@@ -74,5 +98,6 @@
             </div>
         <div>    
     </div>
+<script src="js/script.js"></script>
 </body>
 </html>
