@@ -10,7 +10,7 @@
     <div class="container mt-5">
         <a class="btn btn-primary" href="index.php" role="button" >Página de cadastro</a>
         <a class="btn btn-primary" href="consulta.php?pagina=1" role="button">Página de consulta</a>
-        <a class="btn btn-primary" href="pesquisa.php?nome=Pesquisa vazia" role="button">Página de pesquisa</a>
+        <a class="btn btn-primary" href="pesquisa.php" role="button">Página de pesquisa</a>
     </div>  
  </body>
 </html>

@@ -13,21 +13,7 @@
   
   <script type="text/javascript">
    $(document).ready(function(){
-    $('#formPesquisa').submit(function(e){
-        e.preventDefault();
-
-        var pesquisa = $('#nome_pesquisa').val();
-        console.log(pesquisa);
-
-        //Ajax
-        $.ajax({
-            "url": "api/teste",
-            "data": "parametro=teste",
-            "method": "GET",
-            "dataType": "json",
-            "success": function(r){ alert(r) }
-        });
-     });
+    
     });
             
   </script>
@@ -70,12 +56,7 @@
             <div class="card-body ">
                 <?php
                 
-                if(isset($_GET['nome'])){
-                    $pesquisa = $_GET['nome'];
-                }else{
-                    $pesquisa = "Pesquisa vazia"; 
-                }
-
+                $pesquisa = $_POST['nome_pesquisa'];
 
                 if($pesquisa == "Pesquisa vazia" || empty($pesquisa)){
                     echo "";
