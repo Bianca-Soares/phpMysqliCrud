@@ -81,7 +81,7 @@
                             
                             $_GET['id_usuario'] = $dados['id_usuario'];
                             
-                            echo '<a class="btn btn-primary" href="formularioedita.php?id_usuario='.$dados['id_usuario'].'&pagina='.$_GET['pagina'].'" role="button" >Editar</a>
+                            echo '<a class="btn btn-primary" href="formularioedita.php?id_usuario='.$dados['id_usuario'].'&pagina='.$pagina.'" role="button" >Editar</a>
                                 <a class="btn btn-primary" href="delete.php?id_usuario='.$dados['id_usuario'].'&pagina='.$pagina.'"  role="button" >Excluir</a> <br><hr>';                   
                     }   
             ?>

@@ -6,7 +6,9 @@
       //requisição das querys
         require 'database.php';
         
+        $pagina = $_GET['pagina'];
         $id= $_GET['id'];
+        $where = "'id_usuario=".$id."'";
         $where = "id_usuario = ".$id;
         
         $nome = $_POST['nome_usuario'];
@@ -23,12 +25,11 @@
         
        // echo "'id_usuario=".$id."'";
     if($edita){ 
-      header('Location:consulta.php?pagina='.$_GET['pagina']);
-       // echo '<script>alert("Ação realizada")</script> ';
-        
+      header('Location:consulta.php?pagina='.$pagina);
+    
     }else{
         echo"erro";
-        //echo mysqli_error($conexao);
+        echo mysqli_error($conexao);
     }
       ?>
  

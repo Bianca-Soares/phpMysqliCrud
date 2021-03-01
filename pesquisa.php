@@ -61,7 +61,7 @@
                             echo 'Telefone: '.$user['telefone'].'<br>';
                             echo 'Endereço: '.$user['endereco'].'<br><br>';                 
                             echo '<a class="btn btn-primary" href="formularioedita.php?id_usuario='.$user['id_usuario'].'&pagina=1"  role="button" >Editar</a>
-                                    <a class="btn btn-primary" href="delete.php?id_usuario='.$user['id_usuario'].'"  role="button" >Excluir</a> <br><hr>';                    
+                                    <a class="btn btn-primary" href="delete.php?id_usuario='.$user['id_usuario'].'&pagina=1"  role="button" >Excluir</a> <br><hr>';                    
                         }
                     }
                 }

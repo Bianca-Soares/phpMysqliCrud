@@ -50,7 +50,7 @@
                        
     ?>
     
-    <div class="container p-3 shadow mt-5 ">
+    <div class="container p-5 shadow mt-5">
     <?php  echo '<form method="post" action="edita.php?id='.$id.'&pagina='.$_GET['pagina'].'">';?>
             <label class ="h4">Editar de Usuário:</label>
             <div class="form-group">
