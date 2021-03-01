@@ -1,14 +1,3 @@
-<!DOCTYPE HTML>
-<html lang="pt_br">
- <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <title>Crud PHP com MySQli</title>
-
- </head>
- <body>
-    <div class="container mt-5">
-      
       <?php
       //requisição das variáveis do banco
         require 'init.php';
@@ -16,8 +5,6 @@
         require 'connection.php';
       //requisição das querys
         require 'database.php';
-
-        require 'menu.php';
         
         $id= $_GET['id'];
         $where = "id_usuario = ".$id;
@@ -36,13 +23,12 @@
         
        // echo "'id_usuario=".$id."'";
     if($edita){ 
-        echo '<script>alert("Ação realizada")</script> ';
+      header('Location:consulta.php?pagina='.$_GET['pagina']);
+       // echo '<script>alert("Ação realizada")</script> ';
         
     }else{
         echo"erro";
         //echo mysqli_error($conexao);
     }
       ?>
-    </div>    
- </body>
-</html>
+ 

@@ -19,9 +19,9 @@
 
         require 'menu.php';
 
-        $nome= $_POST['nome_usuario'];
-        $telefone= $_POST['telefone'];
-        $endereco= $_POST['endereco'];
+        $nome= $_POST['var_usuario'];
+        $telefone= $_POST['var_telefone'];
+        $endereco= $_POST['var_endereco'];
         
 
         $usuario = array(
@@ -31,9 +31,8 @@
         );
             
         $salva = DBCreate('tb_usuario', $usuario);
-        if($salva){ 
-            echo '<script>alert("Ação realizada")</script> ';
-            
+        if($salva){
+          console_log( "Salvo true");            
         }else{
             echo"erro";
             echo mysqli_error($conexao);

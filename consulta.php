@@ -51,6 +51,10 @@
 ?>
     
     <div class="container mt-5">
+
+    <div class="lista_usuario">
+        
+    </div>
         <label class ="h4">Lista de Usuário:</label>
         <div class="card"  >
             <div class="card-body ">
@@ -75,8 +79,10 @@
                             echo 'Telefone: '.$dados['telefone'].'<br>';
                             echo 'Endereço: '.$dados['endereco'].'<br><br>';
                             
-                            echo '<a class="btn btn-primary" href="formularioedita.php?id_usuario='.$dados['id_usuario'].'" role="button" >Editar</a>
-                                <a class="btn btn-primary" href="delete.php?id_usuario='.$dados['id_usuario'].'"  role="button" >Excluir</a> <br><hr>';                    
+                            $_GET['id_usuario'] = $dados['id_usuario'];
+                            
+                            echo '<a class="btn btn-primary" href="formularioedita.php?id_usuario='.$dados['id_usuario'].'&pagina='.$_GET['pagina'].'" role="button" >Editar</a>
+                                <a class="btn btn-primary" href="delete.php?id_usuario='.$dados['id_usuario'].'&pagina='.$pagina.'"  role="button" >Excluir</a> <br><hr>';                   
                     }   
             ?>
 
@@ -102,5 +108,6 @@
             </div>
         </div>    
     </div>
+    <script src="js/script.js"></script>
 </body>
 </html>
