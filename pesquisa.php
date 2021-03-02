@@ -50,7 +50,7 @@
                     echo "";
                 }else{
                     
-                    $usuario = DBRead('tb_usuario', '*', "WHERE nome_usuario LIKE '%$pesquisa%'");
+                    $usuario = DBRead('tb_usuario', '*', "WHERE nome_usuario LIKE '%$pesquisa%' ORDER BY nome_usuario ASC");
                     if(!$usuario){
                         echo "Pesquisa vazia";   
                     }else{

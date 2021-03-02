@@ -33,6 +33,7 @@
         //requisição das querys
         require 'database.php';
 
+        $pagina = $_GET['pagina'];
         $id = $_GET['id_usuario'];
         $where = "'id_usuario=".$id."'";
    
@@ -51,7 +52,7 @@
     ?>
     
     <div class="container p-5 shadow mt-5">
-    <?php  echo '<form method="post" action="edita.php?id='.$id.'&pagina='.$_GET['pagina'].'">';?>
+    <?php  echo '<form method="post" action="edita.php?id='.$id.'&pagina='.$pagina.'">';?>
             <label class ="h4">Editar de Usuário:</label>
             <div class="form-group">
                 <label for="nome">Nome: </label>

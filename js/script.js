@@ -19,5 +19,3 @@ $('#form_cadastro').submit(function(e){
 
     });
 });
-
-

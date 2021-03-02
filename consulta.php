@@ -70,7 +70,8 @@
                      
                     if($quantidadeRegistro == 0){
                         echo "Sem registro";
-                    }else{
+                    }else
+                    {
                         
 //Visualização                   
                         while ($dados = mysqli_fetch_array($usuariosLimitado)) {
@@ -83,27 +84,25 @@
                             
                             echo '<a class="btn btn-primary" href="formularioedita.php?id_usuario='.$dados['id_usuario'].'&pagina='.$pagina.'" role="button" >Editar</a>
                                 <a class="btn btn-primary" href="delete.php?id_usuario='.$dados['id_usuario'].'&pagina='.$pagina.'"  role="button" >Excluir</a> <br><hr>';                   
-                    }   
-            ?>
-
-        <?php    
- //Exibir com paginação
- 
-// agora vamos criar os botões "Anterior e próximo"
-            $anterior = $pagAtual -1;
-            $proximo = $pagAtual +1;
-            
-            
-            if ($pagAtual > 1) {
-                echo " <a  href='?pagina=$anterior'><- Anterior</a>  | ";
-            }
+                        }   
+             
+                //Exibir com paginação
                 
-            if ($pagAtual < $totalPaginas) {
-                echo " <a href='?pagina=$proximo'>Próxima -></a>";
-            }
+                // Botões "Anterior e próximo"
+                            $anterior = $pagAtual -1;
+                            $proximo = $pagAtual +1;
+                            
+                            
+                            if ($pagAtual > 1) {
+                                echo " <a  href='?pagina=$anterior'><- Anterior</a>  | ";
+                            }
+                                
+                            if ($pagAtual < $totalPaginas) {
+                                echo " <a href='?pagina=$proximo'>Próxima -></a>";
+                            }
 
-            }
-        ?>
+                        }
+                    ?>
                 
             </div>
         </div>    
