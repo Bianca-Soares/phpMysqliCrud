@@ -22,7 +22,6 @@
       
   $edita = DBUpDate('tb_usuario', $usuario, $where);
   
-  // echo "'id_usuario=".$id."'";
 if($edita){ 
   header('Location:consulta.php?pagina='.$_GET['pagina']);
 
